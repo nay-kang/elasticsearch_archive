@@ -78,7 +78,7 @@ for group in groups:
             "indices":indices,
             "ignore_unavailable":True,
             "include_global_state":False
-    },wait_for_completion=True)
+    },wait_for_completion=True,request_timeout=800)
     #tar snapshot folder and move to special dir
     cmd = "cd %s && tar cjSf %s.tar.bz2 %s && mv %s.tar.bz2 %s.tar.bz2" % (repo_path,'backup','backup','backup',archive_path+'/backup_es_snap_'+group+suffix)
     print cmd
