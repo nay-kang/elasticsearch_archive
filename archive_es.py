@@ -80,7 +80,7 @@ def do_archive(groups,repo_path,archive_path,suffix,es_client,dry_run):
                     "ignore_unavailable":True,
                     "include_global_state":False
             },params={
-                "wait_for_completion":True,
+                "wait_for_completion":"true",
                 "request_timeout":800
             })
         #tar snapshot folder and move to special dir
@@ -120,6 +120,6 @@ if __name__ == '__main__':
         dry_run = False
 
     es_client = Elasticsearch(["%s:%s" %(args.host,args.port)])
-    groups = get_archive_group(args.before,es_client)
+    groups = get_archive_group(int(args.before),es_client)
 
     do_archive(groups,args.repo_path,args.archive_path,args.suffix,es_client,dry_run)
